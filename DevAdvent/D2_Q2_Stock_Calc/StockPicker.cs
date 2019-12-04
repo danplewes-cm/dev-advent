@@ -49,8 +49,7 @@ namespace D2_Q2_Stock_Calc
 				    }
 				    else
 				    {
-					    currSell = currVal;
-					    bestResult = new StockResult(currBuy, currSell);
+					    currSell = currVal;				    
 				    }
 			    }
 			    else
@@ -67,14 +66,17 @@ namespace D2_Q2_Stock_Calc
 				    }
 			    }
 
-			    if (bestResult == null || currSell - currBuy < bestResult.Profit)
+			    if (currSell > 0)
 			    {
-					bestResult = new StockResult(currBuy, currSell);
-			    }
-				else if (currSell > bestResult.SellPrice)
-			    {
-				    bestResult.SellPrice = currSell;
-			    }
+				    if (bestResult == null || currSell - currBuy > bestResult.Profit)
+				    {
+					    bestResult = new StockResult(currBuy, currSell);
+				    }
+				    else if (currSell > bestResult.SellPrice)
+				    {
+					    bestResult.SellPrice = currSell;
+				    }
+				}			    
 		    }
 
 		    return bestResult;
