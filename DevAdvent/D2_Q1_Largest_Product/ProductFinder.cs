@@ -9,7 +9,7 @@ namespace D2_Q1_Largest_Product
     {
 	    public class ProductResult
 	    {
-		    public int Product;
+		    public long Product;
 		    public List<int> Values;
 
 		    public ProductResult(List<int> values)
