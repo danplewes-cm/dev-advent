@@ -40,10 +40,14 @@ namespace D2_Q1_Largest_Product
 
 	    public ProductResult GetLargestProduct()
 	    {
+		    if (_inputData.Count == 3)
+		    {
+			    return new ProductResult(_inputData);
+		    }
+
 		    List<int> largestPos = new List<int>();
 		    List<int> largestNeg = new List<int>();
 
-			List<int> smallestPos = new List<int>();
 			List<int> smallestNeg = new List<int>();
 
 			// Get the three largest positive and negative numbers
@@ -73,34 +77,11 @@ namespace D2_Q1_Largest_Product
 					    {
 						    largestPos[minIndex] = val;
 					    }
-				    }
-
-				    if (smallestPos.Count < 3)
-				    {
-					    smallestPos.Add(val);
-				    }
-				    else
-				    {
-						var maxIndex = 0;
-					    var maxValue = smallestPos[0];
-					    for (int j = 1; j < smallestPos.Count; j++)
-					    {
-						    if (smallestPos[j] > maxValue)
-						    {
-							    maxValue = smallestPos[j];
-							    maxIndex = j;
-						    }
-					    }
-
-					    if (val < maxValue)
-					    {
-						    smallestPos[maxIndex] = val;
-					    }
-					}
+				    }					
 				}
 			    else
 			    {
-					if (largestNeg.Count < 3)
+					if (largestNeg.Count < 2)
 					{
 						largestNeg.Add(val);
 					}
@@ -152,7 +133,6 @@ namespace D2_Q1_Largest_Product
 			largestPos.Sort();
 
 			smallestNeg.Sort();
-		    smallestPos.Sort();
 
 			// Case 1, 1 or less Negative
 		    if (largestNeg.Count <= 1)
@@ -164,7 +144,7 @@ namespace D2_Q1_Largest_Product
 		    if (largestPos.Count == 0)
 		    {
 				return new ProductResult(smallestNeg);
-		    }			
+		    }					
 
 			// Case 3, Maximize
 		    var largestPosProduct = new ProductResult(largestPos);

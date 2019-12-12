@@ -7,7 +7,7 @@ namespace D2_Q1_Largest_Product
     {
         static void Main(string[] args)
         {           
-	        List<int> input = DataGenerator.DataGeneratorUtils.FetchData(-10, 10, 10);
+	        List<int> input = DataGenerator.DataGeneratorUtils.FetchData(-1000, 1000, 100);
 
 	        if (input.Count > 3)
 	        {
